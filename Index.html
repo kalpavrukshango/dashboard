@@ -149,6 +149,39 @@
   .project-card p {
     color: #444;
   }
+   .about-card {
+    max-width: 900px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    font-size: 1.1rem;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  .about-card p {
+    margin-bottom: 20px;
+  }
+
+  .dropcap {
+    float: left;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #38ef7d;
+    line-height: 1;
+    padding-right: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .about-card {
+      padding: 25px;
+    }
+    .dropcap {
+      font-size: 2.5rem;
+    }
+  }
   </style>
 </head>
 <body>
@@ -167,10 +200,21 @@
   <a href="#contact">Contact</a>
 </nav>
 
-<section id="about">
-  <h2>About Us</h2>
-  <div class="card">
-    <p>Kalpavruksha Rural Development and Educational Sangha is a registered nonprofit organization working in Mundgod, Karnataka since 2021. We aim to empower rural and tribal communities through education, sustainable development, environmental stewardship, and inclusive growth initiatives.</p>
+<section id="about" style="background: #f0fefb; padding: 80px 20px;">
+  <h2 style="text-align:center; color:#11998e; font-size: 2.5rem; margin-bottom: 40px;">About Us</h2>
+  <div class="about-card">
+    <p>
+      <span class="dropcap">K</span>alpavruksha Rural Development and Educational Sangha is a registered nonprofit organization working in Mundgod, Karnataka since 2021. We aim to empower rural and tribal communities through education, sustainable development, environmental stewardship, and inclusive growth initiatives.
+    </p>
+    <p>
+      Kalpavruksha is dedicated to the integrated development of rural and tribal communities through holistic programs in education, environment, empowerment, and livelihoods. Our goal is to build sustainable, inclusive, and resilient communities by addressing the root causes of poverty, inequality, and underdevelopment.
+    </p>
+    <p>
+      We operate with the belief that rural and tribal regions hold immense potential when given access to the right opportunities, tools, and support. Our interventions are community-driven, research-backed, and designed to create long-term positive impact.
+    </p>
+    <p>
+      Inspired by the name <strong>“Kalpavruksha”</strong>, a mythological tree that fulfills wishes, our organization seeks to be a source of growth and transformation for society.
+    </p>
   </div>
 </section>
 
@@ -270,7 +314,7 @@
 </section>
 
 <footer>
-  <p>© 2025 Kalpavruksha Rural Development & Educational Sangha | Designed with ♥ for a better tomorrow</p>
+  <p>© 2025 Kalpavruksha Rural Development & Educational Sangha | Designed & Developed BY Bephik Technology Private Limited</p>
 </footer>
 
 <script>
