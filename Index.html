@@ -118,6 +118,37 @@
       max-height: 80vh;
       border-radius: 10px;
     }
+     .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .project-card {
+    background: white;
+    border-left: 5px solid #38ef7d;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
+  }
+
+  .project-card h3 {
+    color: #11998e;
+    margin-bottom: 10px;
+  }
+
+  .project-card p {
+    color: #444;
+  }
   </style>
 </head>
 <body>
@@ -144,25 +175,76 @@
 </section>
 
 <section id="areas">
-  <h2>Core Areas of Work</h2>
+  <h2>Our Core Areas of Work</h2>
   <div class="grid">
-    <div class="card"><strong>Education:</strong> Improving access, quality, and inclusion.</div>
-    <div class="card"><strong>Environment:</strong> Tree plantations, forest conservation, eco-awareness.</div>
-    <div class="card"><strong>Livelihoods:</strong> Sustainable agriculture, SHGs, skill training.</div>
-    <div class="card"><strong>Youth & Sports:</strong> Tournaments, training, rural athlete support.</div>
-    <div class="card"><strong>Women Empowerment:</strong> SHGs, skill development, digital literacy.</div>
-    <div class="card"><strong>Tribal Development:</strong> Holistic support for indigenous communities.</div>
+    <div class="card">
+      <img src="kalpavruksha_images/page3_img1.jpeg" alt="Education" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Education</strong><br>Improving access, quality, and inclusion.
+      </div>
+    </div>
+    <div class="card">
+      <img src="kalpavruksha_images/page3_img2.jpeg" alt="Environment" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Environment</strong><br>Tree plantations, forest conservation, eco-awareness.
+      </div>
+    </div>
+    <div class="card">
+      <img src="kalpavruksha_images/page2_img1.jpeg" alt="Livelihoods" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Livelihoods</strong><br>Sustainable agriculture, SHGs, skill training.
+      </div>
+    </div>
+    <div class="card">
+      <img src="kalpavruksha_images/page4_img1.jpeg" alt="Youth & Sports" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Youth & Sports</strong><br>Events, training, rural athlete support.
+      </div>
+    </div>
+    <div class="card">
+      <img src="kalpavruksha_images/page4_img2.jpeg" alt="Women Empowerment" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Women Empowerment</strong><br>SHGs, tailoring, digital literacy.
+      </div>
+    </div>
+    <div class="card">
+      <img src="kalpavruksha_images/page4_img3.jpeg" alt="Tribal Development" style="width:100%; border-radius:8px 8px 0 0;">
+      <div style="padding:10px;">
+        <strong>Tribal Development</strong><br>Holistic support for indigenous communities.
+      </div>
+    </div>
   </div>
 </section>
 
+
 <section id="projects">
-  <h2>Projects (2023-24)</h2>
-  <div class="card"><strong>School Facilities:</strong> Chairs, water tanks, drainage - ₹26,000</div>
-  <div class="card"><strong>Sports Promotion:</strong> Events, uniforms, trophies - ₹1,00,000</div>
-  <div class="card"><strong>Vanamahotsava:</strong> Tree plantation with Forest Dept. - ₹50,000</div>
-  <div class="card"><strong>Food Kit Distribution:</strong> Ankola Shirur - ₹1,00,000</div>
-  <div class="card"><strong>Admin Costs:</strong> Rent, power, phone - ₹1,70,400</div>
+  <h2 style="text-align:center; color:#11998e;">Key Projects</h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <h3>School Infrastructure Support</h3>
+      <p>Enhanced learning environments by providing clean water, drainage, and furniture to government schools.</p>
+    </div>
+    <div class="project-card">
+      <h3>Sports & Youth Empowerment</h3>
+      <p>Organized rural-level tournaments, distributed uniforms, and encouraged youth participation in sports.</p>
+    </div>
+    <div class="project-card">
+      <h3>Vanamahotsava Initiative</h3>
+      <p>Mass tree plantation with the Karnataka Forest Dept and villagers to promote environmental conservation.</p>
+    </div>
+    <div class="project-card">
+      <h3>Relief Distribution Drive</h3>
+      <p>Provided essential food and relief kits in remote regions like Ankola and Shirur during crisis periods.</p>
+    </div>
+    <div class="project-card">
+      <h3>Community Office Setup</h3>
+      <p>Maintained a dedicated office space to coordinate and monitor developmental and outreach activities.</p>
+    </div>
+  </div>
 </section>
+
+
+
 
 <section id="gallery">
   <h2 style="text-align:center; color:#11998e;">Photo Gallery</h2>
