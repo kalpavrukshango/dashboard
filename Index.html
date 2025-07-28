@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,6 +81,43 @@
       font-weight: 600;
       margin-top: 10px;
     }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    #lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +131,7 @@
   <a href="#about">About</a>
   <a href="#areas">Our Work</a>
   <a href="#projects">Projects</a>
+  <a href="#gallery">Gallery</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -124,6 +163,21 @@
   <div class="card"><strong>Admin Costs:</strong> Rent, power, phone - ₹1,70,400</div>
 </section>
 
+<section id="gallery">
+  <h2 style="text-align:center; color:#11998e;">Photo Gallery</h2>
+  <div class="gallery-grid">
+    <img src="kalpavruksha_images/page1_img1.jpeg" alt="Vanamahotsava" onclick="openLightbox(this)">
+    <img src="kalpavruksha_images/page2_img1.jpeg" alt="School Work" onclick="openLightbox(this)">
+    <img src="kalpavruksha_images/page3_img1.jpeg" alt="Sports Activity" onclick="openLightbox(this)">
+    <img src="kalpavruksha_images/page3_img2.jpeg" alt="Tree Plantation" onclick="openLightbox(this)">
+    <img src="kalpavruksha_images/page3_img3.jpeg" alt="Support Activity" onclick="openLightbox(this)">
+  </div>
+
+  <div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="">
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <h2>Contact Us</h2>
   <p><strong>Address:</strong> 05 1st Floor Kamath Complex, Kalal Oni Cross, Hubli Sirsi Main Road, Mundgod</p>
@@ -133,8 +187,19 @@
 </section>
 
 <footer>
-  <p>© 2025 Kalpavruksha Rural Development & Educational Sangha | Designed and develop by Bephik Technology</p>
+  <p>© 2025 Kalpavruksha Rural Development & Educational Sangha | Designed & Developed BY Bephik Technology</p>
 </footer>
+
+<script>
+  function openLightbox(imgElement) {
+    document.getElementById('lightbox-img').src = imgElement.src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
 
 </body>
 </html>
