@@ -9,151 +9,150 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
   <style>
     :root{
-      --brand-1: #11998e; /* teal */
-      --brand-2: #38ef7d; /* lime */
+      --brand-1: #11998e;
+      --brand-2: #38ef7d;
       --dark: #053d3a;
       --muted: #6b6b6b;
-      --card: #ffffff;
-      --glass: rgba(255,255,255,0.6);
       --radius: 12px;
       --max-width: 1100px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: 'Poppins', 'Montserrat', sans-serif;
+      font-family: 'Poppins','Montserrat',sans-serif;
       color:#1f2a2a;
       background: linear-gradient(180deg,#f6fffb 0%, #f9fbff 100%);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
       line-height:1.5;
+      overflow-x:hidden;
     }
 
-    /* Top header / hero */
+    /* Hero */
     .hero{
-      background: radial-gradient(800px 300px at 10% 20%, rgba(56,239,125,0.08), transparent 10%), linear-gradient(90deg, var(--brand-1), var(--brand-2));
-      color: #fff;
-      padding: 64px 20px 40px;
+      position:relative;
+      padding:120px 20px 60px;
       clip-path: polygon(0 0,100% 0,100% 88%,0 100%);
+      overflow:hidden;
+      color:#fff;
+      background: linear-gradient(90deg, #11998e, #38ef7d, #26d07a, #38ef7d);
+      background-size: 600% 600%;
+      animation: gradientShift 25s ease infinite;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
     }
 
+    .hero::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background:radial-gradient(800px 300px at 10% 20%, rgba(255,255,255,0.1), transparent 10%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Particles */
+    .particle{
+      position:absolute;
+      width:12px;
+      height:12px;
+      background:rgba(255,255,255,0.35);
+      border-radius:50%;
+      animation: floatParticle linear infinite;
+      transition: transform 0.2s ease;
+    }
+    @keyframes floatParticle{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0px);}
+    }
+
+    /* Navigation */
     .nav{
       max-width:var(--max-width);
-      margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px;
+      margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; position:relative; z-index:2;
     }
-
     .brand{
-      display:flex; align-items:center; gap:12px;
+      display:flex; align-items:center; gap:18px;
       text-decoration:none; color:white;
+      animation: logoBounce 3s ease-in-out infinite;
     }
-    .brand img{width:58px;height:58px;object-fit:contain;border-radius:10px;background:rgba(255,255,255,0.08);padding:6px}
-    .brand h1{font-size:1.15rem; margin:0; font-weight:800; letter-spacing:0.3px}
+    .brand img{width:140px; height:140px; object-fit:contain; border-radius:12px; background:rgba(255,255,255,0.08); padding:6px;}
+    @keyframes logoBounce{
+      0%,100%{transform:translateY(0px) scale(1);}
+      25%{transform:translateY(-8px) scale(1.05);}
+      50%{transform:translateY(-16px) scale(1.1);}
+      75%{transform:translateY(-8px) scale(1.05);}
+    }
+    .brand h1{font-size:1.3rem; margin:0; font-weight:800; letter-spacing:0.3px}
 
-    .navlinks{display:flex; gap:18px; align-items:center}
+    .navlinks{display:flex; gap:18px; align-items:center; z-index:2}
     .navlinks a{color:rgba(255,255,255,0.95); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; transition:background .18s}
     .navlinks a:hover, .navlinks a:focus{background:rgba(255,255,255,0.08)}
 
     .cta{background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); padding:10px 16px; border-radius:999px; font-weight:700}
 
-    .hero-grid{max-width:var(--max-width); margin:40px auto 0; display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center}
-    .hero-copy h2{font-size:2.4rem; margin:0 0 12px; font-weight:800; line-height:1.05}
-    .hero-copy p{color:rgba(255,255,255,0.94); margin-bottom:18px; font-size:1.03rem}
+    .hero-grid{max-width:var(--max-width); margin:60px auto 0; display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; position:relative; z-index:2}
+    .hero-copy h2{font-size:2.8rem; margin:0 0 12px; font-weight:800; line-height:1.1}
+    .hero-copy p{color:rgba(255,255,255,0.94); margin-bottom:18px; font-size:1.05rem}
 
-    .hero-actions{display:flex; gap:12px; align-items:center}
-    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none}
-    .btn-primary{background:linear-gradient(90deg,var(--brand-2), #26d07a); color:var(--dark); box-shadow:0 8px 20px rgba(18,69,59,0.12)}
+    .hero-actions{display:flex; gap:12px; align-items:center; margin-top:12px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none; transition:all 0.25s ease;}
+    .btn-primary {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2), #26d07a, var(--brand-2));
+      background-size: 200% 100%;
+      animation: gradientMove 3s linear infinite;
+      color: #fff;
+      font-weight:700;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+    }
+    .btn-primary:hover {transform:scale(1.05); box-shadow:0 12px 28px rgba(0,0,0,0.15);}
+    @keyframes gradientMove{0%{background-position:0% 0%;}50%{background-position:100% 0%;}100%{background-position:0% 0%;}}
+    .btn-primary.pulse {animation:pulseGlow 2.5s infinite, gradientMove 3s linear infinite;}
+    @keyframes pulseGlow{0%,100%{box-shadow:0 0 12px rgba(56,239,125,0.4);}50%{box-shadow:0 0 20px rgba(56,239,125,0.6);}}
+
     .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.18); color:#fff}
+    .btn-ghost:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.12);}
 
-    .hero-card{background:rgba(255,255,255,0.95); padding:22px; border-radius:16px; box-shadow:0 10px 30px rgba(3,40,34,0.06); color:var(--dark)}
-    .stat{display:flex; gap:12px; align-items:center}
-    .stat .num{font-size:1.6rem; font-weight:800; color:var(--brand-1)}
-
-    /* sticky nav on scroll */
-    header.sticky .nav{position:sticky; top:12px;}
+    .hero-card{background:rgba(255,255,255,0.95); padding:22px; border-radius:16px; box-shadow:0 10px 30px rgba(3,40,34,0.06); color:var(--dark); transition: transform 0.22s, box-shadow 0.22s;}
+    .hero-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,40,36,0.08);}
 
     main{padding:40px 20px; max-width:var(--max-width); margin:-30px auto 60px}
 
-    /* About card */
-    .about{
-      background:linear-gradient(180deg,#ffffff, #f8fff9);
-      border-radius:16px; padding:28px; box-shadow:0 12px 30px rgba(5,45,40,0.04); margin-bottom:28px
-    }
-    .about .dropcap{float:left; font-size:3rem; font-weight:800; color:var(--brand-2); margin-right:12px}
-    .about p{color:var(--muted)}
-
-    /* Grid of core areas */
-    .areas{display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); margin-bottom:24px}
-    .area{background:linear-gradient(180deg,#fff,#fcfffc); border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:8px; box-shadow:0 8px 20px rgba(2,36,33,0.03); border-left:6px solid var(--brand-2)}
-    .area img{width:100%; height:140px; object-fit:cover; border-radius:10px}
-    .area h4{margin:0; color:var(--dark)}
-    .area p{margin:0; font-size:0.95rem; color:var(--muted)}
-
-    /* Projects */
-    .projects{display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-bottom:28px}
-    .project{background:linear-gradient(180deg,#fff,#fbfffb); padding:18px; border-radius:12px; box-shadow:0 10px 26px rgba(3,40,34,0.04); transition:transform .22s, box-shadow .22s}
-    .project:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,40,36,0.07)}
-    .project h3{margin:0 0 8px; color:var(--brand-1)}
-
-    /* Gallery */
-    .gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px}
-    .gallery img{width:100%; aspect-ratio:16/11; object-fit:cover; border-radius:10px; cursor:pointer; box-shadow:0 6px 18px rgba(5,40,35,0.06); transition:transform .18s}
-    .gallery img:hover{transform:scale(1.03)}
-
-    /* Lightbox */
-    .lightbox{position:fixed; inset:0; display:none; place-items:center; background:rgba(1,6,5,0.68); z-index:9999}
-    .lightbox.open{display:grid}
-    .lightbox img{max-width:90%; max-height:82vh; border-radius:12px; box-shadow:0 30px 60px rgba(2,20,18,0.6)}
-
-    /* Contact */
-    .contact{background:linear-gradient(90deg,var(--brand-1),var(--brand-2)); color:#fff; padding:28px; border-radius:14px; display:flex; gap:18px; align-items:center; justify-content:space-between}
-    .contact .info{max-width:70%}
-    .contact p{margin:4px 0}
-
-    footer{margin-top:26px; text-align:center; color:#5b6b6a; font-size:0.92rem}
-
-    /* small screens */
-    @media (max-width:880px){
-      .hero-grid{grid-template-columns:1fr;}
-      .navlinks{display:none}
-      .nav{justify-content:space-between}
-    }
-
-    @media (max-width:480px){
-      .hero-copy h2{font-size:1.6rem}
-      .brand h1{font-size:0.96rem}
-    }
-
-    /* utility */
-    .muted{color:var(--muted)}
+    section{opacity:0; transform:translateY(30px); transition:opacity 0.8s ease, transform 0.8s ease;}
+    section.visible{opacity:1; transform:translateY(0);}
   </style>
 </head>
 <body>
-
   <div class="hero">
-    <nav class="nav" aria-label="Main navigation">
+    <!-- Particles -->
+    <div id="particles"></div>
+
+    <nav class="nav">
       <a class="brand" href="#">
-        <img src="assets/logo.png" alt="Kalpavruksha logo" onerror="this.style.display='none'">
+        <img src="assets/logo.png" alt="Kalpavruksha logo">
         <div>
-          <div style="font-size:0.75rem;opacity:0.92">Kalpavruksha</div>
-          <div style="font-size:0.68rem;opacity:0.8">Rural Development & Education Sangha Sullalli </div>
+          <div style="font-size:0.85rem;opacity:0.92">Kalpavruksha</div>
+          <div style="font-size:0.7rem;opacity:0.8">Rural Development & Education Sangha</div>
         </div>
       </a>
-
-      <div class="navlinks" role="menubar">
-        <a href="#about" role="menuitem">About</a>
-        <a href="#areas" role="menuitem">Our Work</a>
-        <a href="#projects" role="menuitem">Projects</a>
-        <a href="#gallery" role="menuitem">Gallery</a>
-        <a href="#contact" role="menuitem">Contact</a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#areas">Our Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
         <a href="#donate" class="cta">Join / Donate</a>
       </div>
-
-      <!-- mobile menu button -->
-      <button id="mobileToggle" aria-label="Open menu" style="background:transparent;border:0;color:white;display:none">☰</button>
     </nav>
 
     <div class="hero-grid">
@@ -162,188 +161,215 @@
         <p>Kalpavruksha is a community-first nonprofit based in Mundgod, Karnataka. Since 2021 we work with tribal & rural communities to build resilient, sustainable, and empowered futures.</p>
         <div class="hero-actions">
           <a class="btn btn-ghost" href="#projects">See Projects</a>
-        </div>
-
-        <div style="margin-top:18px; display:flex; gap:12px;">
-          <div class="hero-card">
-           
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="hero-card" aria-hidden="false">
-          <h4 style="margin:0 0 12px">Quick Links</h4>
-          <p class="muted" style="margin:0 0 12px">One place for programs, volunteering, and support.</p>
-          <ul style="list-style:none;padding:0;margin:0;display:grid;gap:8px">
-            <li><a href="#projects" style="text-decoration:none;color:var(--brand-1);font-weight:700">Our Key Projects →</a></li>
-            <li><a href="#gallery" style="text-decoration:none;color:var(--brand-1);font-weight:700">Photo Gallery →</a></li>
-            <li><a href="#contact" style="text-decoration:none;color:var(--brand-1);font-weight:700">Contact & Donate →</a></li>
-          </ul>
+          <a class="btn btn-primary" href="#donate">Join / Donate</a>
         </div>
       </div>
     </div>
   </div>
 
   <main>
-    <section id="about" class="about" aria-labelledby="aboutTitle">
-      <h2 id="aboutTitle" style="margin-top:0;color:var(--brand-1)">About Kalpavruksha</h2>
-      <p><span class="dropcap">K</span>alpavruksha Rural Development and Educational Sangha is a registered nonprofit organization working in Mundgod, Karnataka since 2021. We empower rural and tribal communities through education, sustainable development, environmental stewardship, and inclusive growth initiatives.</p>
-      <p class="muted">Our interventions are community-driven, research-backed, and designed to create long-term positive impact. Inspired by the name <strong>“Kalpavruksha”</strong>, our organisation seeks to be a source of growth and transformation for society.</p>
-    </section>
+    <!-- Add sections here -->
+     <main>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title"><span class="glow-icon">🌱</span> About Kalpavruksha</h2>
+    <p><span class="dropcap">K</span>alpavruksha Rural Development and Educational Sangha is a registered nonprofit organization working in Mundgod, Karnataka since 2021. We empower rural and tribal communities through education, sustainable development, environmental stewardship, and inclusive growth initiatives.</p>
+  </section>
 
-    <section id="areas">
-      <h2 style="color:var(--brand-1); margin:16px 0">Our Core Areas</h2>
-      <div class="areas" role="list">
-        <div class="area" role="listitem">
-          
-          <h4>Education</h4>
-          <p>Improving access, quality and inclusive opportunities for children and adults.</p>
-        </div>
-        <div class="area">
-          
-          <h4>Environment</h4>
-          <p>Tree plantations, forest conservation and eco-awareness programs.</p>
-        </div>
-        <div class="area">
-          
-          <h4>Livelihoods</h4>
-          <p>Skill training, SHGs support, and sustainable agriculture techniques.</p>
-        </div>
-        <div class="area">
-          
-          <h4>Youth & Sports</h4>
-          <p>Local tournaments, coaching and youth engagement activities.</p>
-        </div>
-        <div class="area">
-          
-          <h4>Women Empowerment</h4>
-          <p>Self-help groups, tailoring, micro-entrepreneurship and digital literacy.</p>
-        </div>
-        <div class="area">
-        
-          <h4>Tribal Development</h4>
-          <p>Holistic community support for indigenous groups.</p>
-        </div>
+  <!-- Vision & Mission -->
+  <section id="vision-mission" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">🎯</span> Vision & Mission</h2>
+    <div class="grid-container">
+      <div class="animated-card gradient-card">
+        <h3>Vision</h3>
+        <p>To build a just, educated, healthy, and sustainable rural society where every individual, especially the most vulnerable, lives with dignity, opportunity, and self-reliance.</p>
       </div>
-    </section>
-
-    <section id="projects">
-      <h2 style="color:var(--brand-1); margin:18px 0">Key Projects</h2>
-      <div class="projects">
-        <article class="project">
-          <h3>School Infrastructure Support</h3>
-          <p class="muted">Improved sanitation, clean water & furniture for government schools to create better learning spaces.</p>
-        </article>
-
-        <article class="project">
-          <h3>Sports & Youth Empowerment</h3>
-          <p class="muted">Organising rural tournaments, distributing kits and motivating young athletes.</p>
-        </article>
-
-        <article class="project">
-          <h3>Vanamahotsava Initiative</h3>
-          <p class="muted">Mass tree plantation drives in partnership with Karnataka Forest Department and local communities.</p>
-        </article>
-
-        <article class="project">
-          <h3>Relief Distribution Drive</h3>
-          <p class="muted">Food and relief kits for remote communities during crises.</p>
-        </article>
-
-        <article class="project">
-          <h3>Community Office Setup</h3>
-          <p class="muted">A dedicated coordination hub for outreach and monitoring.</p>
-        </article>
+      <div class="animated-card gradient-card">
+        <h3>Mission</h3>
+        <p>To empower rural and tribal communities through integrated programs in education, environment, livelihood, research, skill development, and social justice, fostering equity, innovation, and local leadership for holistic development.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="gallery">
-      <h2 style="color:var(--brand-1); margin:18px 0">Photo Gallery</h2>
-      <div class="gallery" aria-live="polite">
-        <img src="kalpavruksha_images/page1_img1.jpeg" alt="Vanamahotsava" loading="lazy" onclick="openLightbox(this)">
-        <img src="kalpavruksha_images/page2_img1.jpeg" alt="School Work" loading="lazy" onclick="openLightbox(this)">
-        <img src="kalpavruksha_images/page3_img1.jpeg" alt="Sports Activity" loading="lazy" onclick="openLightbox(this)">
-        <img src="kalpavruksha_images/page3_img2.jpeg" alt="Tree Plantation" loading="lazy" onclick="openLightbox(this)">
-        <img src="kalpavruksha_images/page3_img3.jpeg" alt="Support Activity" loading="lazy" onclick="openLightbox(this)">
+  <!-- Co-founder -->
+  <section id="cofounder" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">👤</span> Co-Founder</h2>
+    <div class="cofounder-card animated-card">
+      <img src="assets/cofounder.jpg" alt="Co-Founder Photo" />
+      <div>
+        <h4>– Mr. Khajasab M. Sullalli</h4>
+        <p class="role">Co-Founder & Director</p>
+        <p>Mr. Khajasab M. Sullalli is the Founder and Executive Director of Kalpavruksha Rural Development and Educational Sangha, combining technical expertise with grassroots development knowledge to design impactful programs.</p>
       </div>
+    </div>
+  </section>
 
-      <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" onclick="closeLightbox(event)">
-        <img id="lightboxImg" src="" alt="Expanded photo">
+  <!-- Core Areas -->
+  <section id="areas" class="parallax-section section-bg">
+    <h2 class="section-title glow-text"><span class="glow-icon">⚡</span> Our Core Areas</h2>
+    <div class="grid-container areas">
+      <div class="animated-card gradient-card">Education <p>Improving access, quality and inclusive opportunities for children and adults.</p></div>
+      <div class="animated-card gradient-card">Environment <p>Tree plantations, forest conservation and eco-awareness programs.</p></div>
+      <div class="animated-card gradient-card">Livelihoods <p>Skill training, SHGs support, and sustainable agriculture techniques.</p></div>
+      <div class="animated-card gradient-card">Youth & Sports <p>Local tournaments, coaching and youth engagement activities.</p></div>
+      <div class="animated-card gradient-card">Women Empowerment <p>Self-help groups, tailoring, micro-entrepreneurship and digital literacy.</p></div>
+      <div class="animated-card gradient-card">Tribal Development <p>Holistic community support for indigenous groups.</p></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">🚀</span> Key Projects</h2>
+    <div class="grid-container projects">
+      <article class="animated-card project-card">School Infrastructure Support <p>Improved sanitation, clean water & furniture for government schools.</p></article>
+      <article class="animated-card project-card">Sports & Youth Empowerment <p>Organising rural tournaments, distributing kits and motivating young athletes.</p></article>
+      <article class="animated-card project-card">Vanamahotsava Initiative <p>Mass tree plantation drives in partnership with Karnataka Forest Department.</p></article>
+      <article class="animated-card project-card">Relief Distribution Drive <p>Food and relief kits for remote communities during crises.</p></article>
+      <article class="animated-card project-card">Community Office Setup <p>A dedicated coordination hub for outreach and monitoring.</p></article>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="parallax-section section-bg">
+    <h2 class="section-title glow-text"><span class="glow-icon">📸</span> Photo Gallery</h2>
+    <div class="gallery grid-container">
+      <img src="kalpavruksha_images/page1_img1.jpeg" alt="Vanamahotsava" onclick="openLightbox(this)" />
+      <img src="kalpavruksha_images/page2_img1.jpeg" alt="School Work" onclick="openLightbox(this)" />
+      <img src="kalpavruksha_images/page3_img1.jpeg" alt="Sports Activity" onclick="openLightbox(this)" />
+    </div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <img id="lightboxImg" src="" alt="Expanded photo">
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="parallax-section section-bg" style="background:linear-gradient(145deg,#38ef7d,#11998e); color:#fff;">
+    <h2 class="section-title glow-text"><span class="glow-icon">📍</span> Contact Us</h2>
+    <div class="contact grid-container">
+      <div class="info animated-card">
+        <p>Kalpavruksha Rural Development & Educational Sangha, Mundgod, Karnataka</p>
+        <p>Phone: +91 12345 67890</p>
+        <p>Email: info@kalpavruksha.org</p>
       </div>
-    </section>
-
-    <section id="contact" style="margin-top:18px">
-      <div class="contact" role="contentinfo">
-        <div class="info">
-          <p style="font-weight:700">Kalpavruksha Rural Development & Educational Sangha</p>
-          <p class="muted" style="color:rgba(209, 17, 17, 0.95)">05 1st Floor Kamath Complex, Kalal Oni Cross, Hubli Sirsi Main Road, Mundgod</p>
-          <p class="muted" style="color:rgba(209, 17, 17, 0.95)">Email: <a href="mailto:kalpavruksha.rdes@gmail.com" style="color:rgba(255,255,255,0.95);text-decoration:underline">kalpavruksha.rdes@gmail.com</a> | Phone: <a href="tel:+919113024600" style="color:rgba(255,255,255,0.95);text-decoration:underline">+91 9113024600</a></p>
-
-        </div>
-        <div style="margin:10px 0;">
-    <a href="#" target="_blank" rel="noopener" aria-label="Facebook" style="color:white;margin:0 10px;font-size:1.5rem;">
-      <i class="fab fa-facebook"></i>
-    </a>
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram" style="color:white;margin:0 10px;font-size:1.5rem;">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-        <div style="text-align:right">
-          <a href="#donate" class="btn btn-primary">Join / Donate</a>
-        </div>
+      <div class="map animated-card">
+        <iframe src="https://maps.google.com/maps?q=Mundgod&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200"></iframe>
       </div>
-    </section>
+    </div>
+  </section>
+</main>
 
-    <footer>
-      <p>© 2025 Kalpavruksha Rural Development & Educational Sangha Sullalli — Designed & Developed by Bephik Technology Pvt. Ltd.</p>
-    </footer>
+<style>
+  /* Glow Text Header */
+  .glow-text {
+    background: linear-gradient(90deg,#38ef7d,#11998e,#38ef7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size:2.4rem;
+    text-align:center;
+    margin-bottom:32px;
+  }
+
+  /* Glow Icon */
+  .glow-icon {
+    display:inline-block;
+    animation: glow 2s infinite alternate;
+    font-size:2.2rem;
+    margin-right:8px;
+  }
+  @keyframes glow {
+    0%{text-shadow:0 0 6px #38ef7d,0 0 12px #11998e;}
+    100%{text-shadow:0 0 12px #38ef7d,0 0 24px #11998e;}
+  }
+
+  /* Section background */
+  .section-bg {background:#f0fff8; border-radius:20px; padding:60px 20px; margin-bottom:40px;}
+
+  /* Parallax effect */
+  .parallax-section {
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  window.addEventListener('scroll',()=>{
+    document.querySelectorAll('.parallax-section').forEach(section=>{
+      const offset = window.scrollY;
+      section.style.transform = `translateY(${offset*0.05}px)`;
+    });
+  });
+
+  /* Floating & Animated Cards */
+  .animated-card {
+    background:#fff; padding:20px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,0.08);
+    transition:transform 0.4s, box-shadow 0.4s;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 0.8s forwards;
+  }
+  .animated-card:hover {transform:translateY(-8px); box-shadow:0 24px 50px rgba(0,0,0,0.18);}
+  @keyframes fadeUp {to{opacity:1; transform:translateY(0);} }
+
+  /* Grid layout */
+  .grid-container {display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+  /* Gallery images hover */
+  .gallery img {border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,0.12); transition: transform 0.25s; cursor:pointer;}
+  .gallery img:hover {transform:scale(1.05); box-shadow:0 20px 40px rgba(0,0,0,0.18);}
+</style>
+
   </main>
-<!-- Add Font Awesome CDN just before </body> -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <footer>
+    &copy; 2025 Kalpavruksha Rural Development. All Rights Reserved. Designed & Developed By Bephik Technology Pvt
+    <div style="margin-top:6px;">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>&nbsp;
+      <a href="#"><i class="fab fa-instagram"></i></a>&nbsp;
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
   <script>
-    // Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    function openLightbox(img){
-      lightboxImg.src = img.src;
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
+    // Interactive particles
+    const particlesContainer = document.getElementById('particles');
+    const particles = [];
+    const particleCount = 35;
+    for(let i=0;i<particleCount;i++){
+      const p=document.createElement('div');
+      p.classList.add('particle');
+      p.style.left=Math.random()*100+'%';
+      p.style.top=Math.random()*100+'%';
+      const size = 5+Math.random()*10;
+      p.style.width=size+'px';
+      p.style.height=size+'px';
+      p.style.animationDuration=(4+Math.random()*6)+'s';
+      p.style.animationDelay=Math.random()*5+'s';
+      particlesContainer.appendChild(p);
+      particles.push(p);
     }
-    function closeLightbox(e){
-      if(e && e.target !== lightbox) return; // only close when background clicked
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-      lightboxImg.src = '';
-    }
-
-    // Simple accessibility: keyboard close
-    document.addEventListener('keydown', (e)=>{
-      if(e.key === 'Escape') closeLightbox({target: lightbox});
+    document.body.addEventListener('mousemove', e => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      particles.forEach((p)=>{
+        p.style.transform = `translate(${x*20}px, ${y*20}px)`;
+      });
     });
 
-    // Mobile nav toggle (small enhancement)
-    const mobileButton = document.getElementById('mobileToggle');
-    const navlinks = document.querySelector('.navlinks');
-    if(window.matchMedia('(max-width:880px)').matches){
-      mobileButton.style.display = 'block';
-    }
-    mobileButton.addEventListener('click', ()=>{
-      const visible = getComputedStyle(navlinks).display !== 'none';
-      navlinks.style.display = visible ? 'none' : 'flex';
-      navlinks.style.flexDirection = 'column';
-      navlinks.style.background = 'rgba(255,255,255,0.96)';
-      navlinks.style.padding = '12px';
-      navlinks.style.borderRadius = '10px';
-    });
+    // Fade-in sections
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{ threshold:0.2 });
+    sections.forEach(section => observer.observe(section));
 
-    // Reduce motion for users who prefer it
-    if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-      document.documentElement.style.scrollBehavior = 'auto';
-    }
+    // Pulse primary buttons
+    document.querySelectorAll('.btn-primary').forEach(btn=>{
+      btn.classList.add('pulse');
+    });
   </script>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-
 </body>
 </html>
