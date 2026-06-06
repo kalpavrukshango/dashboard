@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kalpavruksha — Rural Development</title>
+  <meta name="description" content="Kalpavruksha Rural Development & Educational Sangha — Education, Environment, Livelihoods, Women & Tribal Development." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --brand-1: #11998e;
+      --brand-2: #38ef7d;
+      --dark: #053d3a;
+      --muted: #6b6b6b;
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Poppins','Montserrat',sans-serif;
+      color:#1f2a2a;
+      background: linear-gradient(180deg,#f6fffb 0%, #f9fbff 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      overflow-x:hidden;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding:120px 20px 60px;
+      clip-path: polygon(0 0,100% 0,100% 88%,0 100%);
+      overflow:hidden;
+      color:#fff;
+      background: linear-gradient(90deg, #11998e, #38ef7d, #26d07a, #38ef7d);
+      background-size: 600% 600%;
+      animation: gradientShift 25s ease infinite;
+    }
+    @keyframes gradientShift{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      top:0; left:0; right:0; bottom:0;
+      background:radial-gradient(800px 300px at 10% 20%, rgba(255,255,255,0.1), transparent 10%);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Particles */
+    .particle{
+      position:absolute;
+      width:12px;
+      height:12px;
+      background:rgba(255,255,255,0.35);
+      border-radius:50%;
+      animation: floatParticle linear infinite;
+      transition: transform 0.2s ease;
+    }
+    @keyframes floatParticle{
+      0%{transform:translateY(0px);}
+      50%{transform:translateY(-20px);}
+      100%{transform:translateY(0px);}
+    }
+
+    /* Navigation */
+    .nav{
+      max-width:var(--max-width);
+      margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; position:relative; z-index:2;
+    }
+    .brand{
+      display:flex; align-items:center; gap:18px;
+      text-decoration:none; color:white;
+      animation: logoBounce 3s ease-in-out infinite;
+    }
+    .brand img{width:140px; height:140px; object-fit:contain; border-radius:12px; background:rgba(255,255,255,0.08); padding:6px;}
+    @keyframes logoBounce{
+      0%,100%{transform:translateY(0px) scale(1);}
+      25%{transform:translateY(-8px) scale(1.05);}
+      50%{transform:translateY(-16px) scale(1.1);}
+      75%{transform:translateY(-8px) scale(1.05);}
+    }
+    .brand h1{font-size:1.3rem; margin:0; font-weight:800; letter-spacing:0.3px}
+
+    .navlinks{display:flex; gap:18px; align-items:center; z-index:2}
+    .navlinks a{color:rgba(255,255,255,0.95); text-decoration:none; font-weight:600; padding:8px 12px; border-radius:8px; transition:background .18s}
+    .navlinks a:hover, .navlinks a:focus{background:rgba(255,255,255,0.08)}
+
+    .cta{background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.12); padding:10px 16px; border-radius:999px; font-weight:700}
+
+    .hero-grid{max-width:var(--max-width); margin:60px auto 0; display:grid; grid-template-columns:1fr 420px; gap:28px; align-items:center; position:relative; z-index:2}
+    .hero-copy h2{font-size:2.8rem; margin:0 0 12px; font-weight:800; line-height:1.1}
+    .hero-copy p{color:rgba(255,255,255,0.94); margin-bottom:18px; font-size:1.05rem}
+
+    .hero-actions{display:flex; gap:12px; align-items:center; margin-top:12px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:999px; cursor:pointer; font-weight:700; text-decoration:none; transition:all 0.25s ease;}
+    .btn-primary {
+      background: linear-gradient(90deg, var(--brand-1), var(--brand-2), #26d07a, var(--brand-2));
+      background-size: 200% 100%;
+      animation: gradientMove 3s linear infinite;
+      color: #fff;
+      font-weight:700;
+      box-shadow:0 6px 20px rgba(0,0,0,0.12);
+    }
+    .btn-primary:hover {transform:scale(1.05); box-shadow:0 12px 28px rgba(0,0,0,0.15);}
+    @keyframes gradientMove{0%{background-position:0% 0%;}50%{background-position:100% 0%;}100%{background-position:0% 0%;}}
+    .btn-primary.pulse {animation:pulseGlow 2.5s infinite, gradientMove 3s linear infinite;}
+    @keyframes pulseGlow{0%,100%{box-shadow:0 0 12px rgba(56,239,125,0.4);}50%{box-shadow:0 0 20px rgba(56,239,125,0.6);}}
+
+    .btn-ghost{background:transparent; border:1px solid rgba(255,255,255,0.18); color:#fff}
+    .btn-ghost:hover{transform:translateY(-4px); box-shadow:0 8px 20px rgba(0,0,0,0.12);}
+
+    .hero-card{background:rgba(255,255,255,0.95); padding:22px; border-radius:16px; box-shadow:0 10px 30px rgba(3,40,34,0.06); color:var(--dark); transition: transform 0.22s, box-shadow 0.22s;}
+    .hero-card:hover{transform:translateY(-6px); box-shadow:0 18px 40px rgba(2,40,36,0.08);}
+
+    main{padding:40px 20px; max-width:var(--max-width); margin:-30px auto 60px}
+
+    section{opacity:0; transform:translateY(30px); transition:opacity 0.8s ease, transform 0.8s ease;}
+    section.visible{opacity:1; transform:translateY(0);}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <!-- Particles -->
+    <div id="particles"></div>
+
+    <nav class="nav">
+      <a class="brand" href="#">
+        <img src="assets/logo.png" alt="Kalpavruksha logo">
+        <div>
+          <div style="font-size:0.85rem;opacity:0.92">Kalpavruksha</div>
+          <div style="font-size:0.7rem;opacity:0.8">Rural Development & Education Sangha</div>
+        </div>
+      </a>
+      <div class="navlinks">
+        <a href="#about">About</a>
+        <a href="#areas">Our Work</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a href="#donate" class="cta">Join / Donate</a>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h2>Transforming Rural Lives — Education, Environment & Livelihoods</h2>
+        <p>Kalpavruksha is a community-first nonprofit based in Mundgod, Karnataka. Since 2021 we work with tribal & rural communities to build resilient, sustainable, and empowered futures.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ghost" href="#projects">See Projects</a>
+          <a class="btn btn-primary" href="#donate">Join / Donate</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- Add sections here -->
+     <main>
+  <!-- About Section -->
+  <section id="about" class="section">
+    <h2 class="section-title"><span class="glow-icon">🌱</span> About Kalpavruksha</h2>
+    <p><span class="dropcap">K</span>alpavruksha Rural Development and Educational Sangha is a registered nonprofit organization working in Mundgod, Karnataka since 2021. We empower rural and tribal communities through education, sustainable development, environmental stewardship, and inclusive growth initiatives.</p>
+  </section>
+
+  <!-- Vision & Mission -->
+  <section id="vision-mission" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">🎯</span> Vision & Mission</h2>
+    <div class="grid-container">
+      <div class="animated-card gradient-card">
+        <h3>Vision</h3>
+        <p>To build a just, educated, healthy, and sustainable rural society where every individual, especially the most vulnerable, lives with dignity, opportunity, and self-reliance.</p>
+      </div>
+      <div class="animated-card gradient-card">
+        <h3>Mission</h3>
+        <p>To empower rural and tribal communities through integrated programs in education, environment, livelihood, research, skill development, and social justice, fostering equity, innovation, and local leadership for holistic development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Co-founder -->
+  <section id="cofounder" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">👤</span> Co-Founder</h2>
+    <div class="cofounder-card animated-card">
+      <img src="assets/cofounder.jpg" alt="Co-Founder Photo" />
+      <div>
+        <h4>– Mr. Khajasab M. Sullalli</h4>
+        <p class="role">Co-Founder & Director</p>
+        <p>Mr. Khajasab M. Sullalli is the Founder and Executive Director of Kalpavruksha Rural Development and Educational Sangha, combining technical expertise with grassroots development knowledge to design impactful programs.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Areas -->
+  <section id="areas" class="parallax-section section-bg">
+    <h2 class="section-title glow-text"><span class="glow-icon">⚡</span> Our Core Areas</h2>
+    <div class="grid-container areas">
+      <div class="animated-card gradient-card">Education <p>Improving access, quality and inclusive opportunities for children and adults.</p></div>
+      <div class="animated-card gradient-card">Environment <p>Tree plantations, forest conservation and eco-awareness programs.</p></div>
+      <div class="animated-card gradient-card">Livelihoods <p>Skill training, SHGs support, and sustainable agriculture techniques.</p></div>
+      <div class="animated-card gradient-card">Youth & Sports <p>Local tournaments, coaching and youth engagement activities.</p></div>
+      <div class="animated-card gradient-card">Women Empowerment <p>Self-help groups, tailoring, micro-entrepreneurship and digital literacy.</p></div>
+      <div class="animated-card gradient-card">Tribal Development <p>Holistic community support for indigenous groups.</p></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="parallax-section">
+    <h2 class="section-title glow-text"><span class="glow-icon">🚀</span> Key Projects</h2>
+    <div class="grid-container projects">
+      <article class="animated-card project-card">School Infrastructure Support <p>.Improved sanitation, clean water & furniture for government schools.</p></article>
+      <article class="animated-card project-card">Sports & Youth Empowerment <p>Organising rural tournaments, distributing kits and motivating young athletes.</p></article>
+      <article class="animated-card project-card">Vanamahotsava Initiative <p>Mass tree plantation drives in partnership with Karnataka Forest Department.</p></article>
+      <article class="animated-card project-card">Relief Distribution Drive <p>Food and relief kits for remote communities during crises.</p></article>
+      <article class="animated-card project-card">Community Office Setup <p>A dedicated coordination hub for outreach and monitoring.</p></article>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="parallax-section section-bg">
+    <h2 class="section-title glow-text"><span class="glow-icon">📸</span> Photo Gallery</h2>
+    <div class="gallery grid-container">
+      <img src="kalpavruksha_images/page1_img1.jpeg" alt="Vanamahotsava" onclick="openLightbox(this)" />
+      <img src="kalpavruksha_images/page2_img1.jpeg" alt="School Work" onclick="openLightbox(this)" />
+      <img src="kalpavruksha_images/page3_img1.jpeg" alt="Sports Activity" onclick="openLightbox(this)" />
+    </div>
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+      <img id="lightboxImg" src="" alt="Expanded photo all">
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="parallax-section section-bg" style="background:linear-gradient(145deg,#38ef7d,#11998e); color:#fff;">
+    <h2 class="section-title glow-text"><span class="glow-icon">📍</span> Contact Us</h2>
+    <div class="contact grid-container">
+      <div class="info animated-card">
+        <p>Kalpavruksha Rural Development & Educational Sangha, Mundgod, Karnataka</p>
+        <p>Phone: +91 12345 67890</p>
+        <p>Email: info@kalpavruksha.org</p>
+      </div>
+      <div class="map animated-card">
+        <iframe src="https://maps.google.com/maps?q=Mundgod&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="200"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<style>
+  /* Glow Text Header */
+  .glow-text {
+    background: linear-gradient(90deg,#38ef7d,#11998e,#38ef7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size:2.4rem;
+    text-align:center;
+    margin-bottom:32px;
+  }
+
+  /* Glow Icon */
+  .glow-icon {
+    display:inline-block;
+    animation: glow 2s infinite alternate;
+    font-size:2.2rem;
+    margin-right:8px;
+  }
+  @keyframes glow {
+    0%{text-shadow:0 0 6px #38ef7d,0 0 12px #11998e;}
+    100%{text-shadow:0 0 12px #38ef7d,0 0 24px #11998e;}
+  }
+
+  /* Section background */
+  .section-bg {background:#f0fff8; border-radius:20px; padding:60px 20px; margin-bottom:40px;}
+
+  /* Parallax effect */
+  .parallax-section {
+    transform: translateY(0);
+    transition: transform 0.3s ease-out;
+  }
+
+  window.addEventListener('scroll',()=>{
+    document.querySelectorAll('.parallax-section').forEach(section=>{
+      const offset = window.scrollY;
+      section.style.transform = `translateY(${offset*0.05}px)`;
+    });
+  });
+
+  /* Floating & Animated Cards */
+  .animated-card {
+    background:#fff; padding:20px; border-radius:20px; box-shadow:0 14px 40px rgba(0,0,0,0.08);
+    transition:transform 0.4s, box-shadow 0.4s;
+    cursor:pointer;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 0.8s forwards;
+  }
+  .animated-card:hover {transform:translateY(-8px); box-shadow:0 24px 50px rgba(0,0,0,0.18);}
+  @keyframes fadeUp {to{opacity:1; transform:translateY(0);} }
+
+  /* Grid layout */
+  .grid-container {display:grid; gap:24px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+
+  /* Gallery images hover */
+  .gallery img {border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,0.12); transition: transform 0.25s; cursor:pointer;}
+  .gallery img:hover {transform:scale(1.05); box-shadow:0 20px 40px rgba(0,0,0,0.18);}
+</style>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Kalpavruksha Rural Development. All Rights Reserved. Designed & Developed By Bephik Technology Pvt
+    <div style="margin-top:6px;">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>&nbsp;
+      <a href="#"><i class="fab fa-instagram"></i></a>&nbsp;
+      <a href="#"><i class="fab fa-twitter"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Interactive particles
+    const particlesContainer = document.getElementById('particles');
+    const particles = [];
+    const particleCount = 35;
+    for(let i=0;i<particleCount;i++){
+      const p=document.createElement('div');
+      p.classList.add('particle');
+      p.style.left=Math.random()*100+'%';
+      p.style.top=Math.random()*100+'%';
+      const size = 5+Math.random()*10;
+      p.style.width=size+'px';
+      p.style.height=size+'px';
+      p.style.animationDuration=(4+Math.random()*6)+'s';
+      p.style.animationDelay=Math.random()*5+'s';
+      particlesContainer.appendChild(p);
+      particles.push(p);
+    }
+    document.body.addEventListener('mousemove', e => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      particles.forEach((p)=>{
+        p.style.transform = `translate(${x*20}px, ${y*20}px)`;
+      });
+    });
+
+    // Fade-in sections
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },{ threshold:0.2 });
+    sections.forEach(section => observer.observe(section));
+
+    // Pulse primary buttons
+    document.querySelectorAll('.btn-primary').forEach(btn=>{
+      btn.classList.add('pulse');
+    });
+  </script>
+</body>
+</html>
